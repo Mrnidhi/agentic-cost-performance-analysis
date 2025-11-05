@@ -1,41 +1,9 @@
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.pkl
-.env
-.venv
-venv/
-
-# Jupyter Notebook
 .ipynb_checkpoints/
-*.ipynb~
-
-# Logs
-logs/
-*.log
-
-# OS-specific
-Icon?
-.Spotlight-V100
-.Trashes
-
-# Editor/IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Data cache
-*.cache/
-
-
+__pycache__/
+*.py[cod]
+.env
+.venv/
+outputs/*.png
+outputs/*.pdf
+# outputs/models/     # uncomment if you want to ignore saved models
+# data/*.csv          # uncomment if you don't want to commit data
