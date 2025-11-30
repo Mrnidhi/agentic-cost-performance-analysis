@@ -1,0 +1,4 @@
+# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/models/service.py
+# hypothesis_version: 6.148.3
+
+[0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 30.0, '.pkl', 'Model cache cleared', 'Model loaded', 'Model registered', 'ModelT', 'Prediction completed', 'Prediction failed', 'Starting prediction', 'active_models_count', 'created_at', 'duration_seconds', 'error', 'error_count', 'feature_names', 'healthy', 'input_shape', 'latest', 'metadata', 'metrics', 'model', 'model_dir', 'model_id', 'model_name', 'model_names', 'model_type', 'model_version', 'name', 'path', 'predict_proba', 'prediction_count', 'prediction_duration', 'predictions', 'rb', 'registered_models', 'status', 'success', 'target_name', 'version', 'wb']

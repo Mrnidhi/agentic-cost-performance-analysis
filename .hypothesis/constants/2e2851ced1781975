@@ -1,0 +1,4 @@
+# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/api/middleware.py
+# hypothesis_version: 6.148.3
+
+[0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 100, 429, '500', 'HTTP request latency', 'Rate limit exceeded', 'Request completed', 'Request failed', 'Request started', 'Retry-After', 'Total HTTP requests', 'X-API-Key', 'X-Request-ID', 'avg_latency', 'client_id', 'client_ip', 'duration_seconds', 'error', 'error_count', 'http_requests_total', 'method', 'path', 'request_count', 'request_id', 'status', 'status_code', 'unknown']

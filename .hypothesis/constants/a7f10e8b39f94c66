@@ -1,0 +1,4 @@
+# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/core/config.py
+# hypothesis_version: 6.148.3
+
+[0.0, 0.001, 0.01, 0.1, 0.15, 0.2, 0.25, 0.5, 0.7, 0.8, 1.0, 20.0, 30.0, 50.0, 75.0, 80.0, 100.0, 400.0, 500.0, 100, 200, 300, 500, 1000, 3600, 8000, 10000, 65535, 100000, 1000000, '*', '.env', '0.0.0.0', 'CRITICAL', 'DEBUG', 'ERROR', 'INFO', 'RiskConfig', 'WARNING', 'after', 'development', 'environment', 'ignore', 'models', 'production', 'secret_key', 'staging', 'utf-8']

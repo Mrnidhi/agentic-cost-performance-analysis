@@ -38,4 +38,15 @@ Icon?
 # Data cache
 *.cache/
 
+# Docker
+*.env.local
 
+# Coverage
+htmlcov/
+.coverage
+
+# Model artifacts (keep .gitkeep)
+models/*.joblib
+
+# Executed notebooks
+*_executed.ipynb
