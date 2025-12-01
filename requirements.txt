@@ -1,15 +1,6 @@
-# Simple requirements for ML + TabPy + Tableau project
-# Install with: pip install -r requirements.txt
-
-# Data processing
-pandas>=2.0.0
-numpy>=1.24.0
-
-# Machine Learning
-scikit-learn>=1.3.0
-joblib>=1.3.0
-
-# TabPy for Tableau integration
-tabpy>=2.8.0
-tabpy-client>=1.1.0
-
+pandas
+numpy
+scikit-learn
+joblib
+tabpy
+tabpy-client

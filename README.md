@@ -6,28 +6,37 @@ A simple ML project that predicts AI agent `success_rate` and integrates with Ta
 
 ---
 
+## 🎯 Project Purpose
+
+This project demonstrates a complete ML → TabPy → Tableau workflow:
+
+1. **Train** a regression model to predict `success_rate` from agent features
+2. **Deploy** the model to TabPy for Tableau integration
+3. **Use** predictions in Tableau for row-level analysis and what-if scenarios
+
+---
+
 ## 📁 Project Structure
 
 ```
-project/
-├── cleaned_data.csv              # Main dataset (also in data/cleaned/)
+agentic-cost-performance-analysis/
+├── cleaned_data.csv              # Main dataset
+├── train_model.py                # Train ML model
+├── deploy_to_tabpy.py            # Deploy to TabPy
 ├── requirements.txt              # Python dependencies
-├── tabpy_config.conf             # TabPy configuration (optional)
 ├── README.md                     # This file
+├── PROJECT_STRUCTURE.md          # Structure guide
+├── tabpy_config.conf             # TabPy configuration
 │
-├── ml/                           # ML scripts and models
-│   ├── train_model.py            # Train the ML model
-│   ├── deploy_to_tabpy.py        # Deploy to TabPy for Tableau
-│   ├── success_rate_model.pkl    # Saved model (after training)
-│   └── model_info.pkl            # Model metadata
+├── success_rate_model.pkl        # Generated: Trained model
+├── model_info.pkl                # Generated: Model metadata (optional)
 │
-└── data/
-    ├── raw/                      # Raw dataset
-    │   └── agentic_ai.csv
-    ├── cleaned/                  # Cleaned dataset
-    │   └── cleaned_data.csv
-    └── analytics/                # Feature engineering outputs
-        └── (processed data goes here)
+├── data/
+│   ├── raw/                      # Raw dataset
+│   ├── cleaned/                  # Cleaned dataset
+│   └── analytics/                # Feature engineering outputs
+│
+└── archive/                       # Legacy files (moved here)
 ```
 
 ---
@@ -43,14 +52,14 @@ pip install -r requirements.txt
 ### Step 2: Train the Model
 
 ```bash
-python ml/train_model.py
+python train_model.py
 ```
 
 This will:
 - Load `cleaned_data.csv`
 - Train a RandomForestRegressor to predict `success_rate`
 - Save the model to `success_rate_model.pkl`
-- Print model performance metrics
+- Print R² score and MAE metrics
 
 ### Step 3: Start TabPy Server
 
@@ -60,12 +69,6 @@ Open a **new terminal** and run:
 tabpy --disable-auth-warning
 ```
 
-Or with config file:
-
-```bash
-tabpy --disable-auth-warning --config tabpy_config.conf
-```
-
 Wait until you see: `Web service listening on port 9004`
 
 ### Step 4: Deploy Model to TabPy
@@ -73,7 +76,7 @@ Wait until you see: `Web service listening on port 9004`
 In your original terminal:
 
 ```bash
-python ml/deploy_to_tabpy.py
+python deploy_to_tabpy.py
 ```
 
 This deploys the `predict_success_rate` function to TabPy.
@@ -130,9 +133,8 @@ Name it **"Predicted Success Rate"** and use it in your visualizations!
 After training, you'll see metrics like:
 
 ```
-RMSE:  0.05-0.10   (lower is better)
-MAE:   0.03-0.08   (lower is better)
-R²:    0.85-0.95   (higher is better, max 1.0)
+R² Score: 0.85-0.95   (higher is better, max 1.0)
+MAE:      0.03-0.08   (lower is better)
 ```
 
 ---
@@ -149,11 +151,11 @@ R²:    0.85-0.95   (higher is better, max 1.0)
 ## 🔧 Troubleshooting
 
 ### "TabPy connection failed"
-- Make sure TabPy is running (`tabpy` in a separate terminal)
+- Make sure TabPy is running (`tabpy --disable-auth-warning` in a separate terminal)
 - Check that port 9004 is not blocked
 
 ### "Model file not found"
-- Run `python ml/train_model.py` first
+- Run `python train_model.py` first
 
 ### "Column not found"
 - Verify your data has all required columns
@@ -161,28 +163,31 @@ R²:    0.85-0.95   (higher is better, max 1.0)
 
 ---
 
-## 📝 Essential Files
+## 📋 Simple Architecture Overview
 
-For the ML + TabPy + Tableau workflow, you only need:
+```
+┌─────────────────┐
+│ cleaned_data.csv│
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ train_model.py   │──► success_rate_model.pkl
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ deploy_to_tabpy │──► TabPy Server (localhost:9004)
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│   Tableau       │──► SCRIPT_REAL calls predict_success_rate
+└─────────────────┘
+```
 
-- `ml/train_model.py` - Trains the model
-- `ml/deploy_to_tabpy.py` - Deploys to TabPy
-- `cleaned_data.csv` - Your dataset (can be in root or `data/cleaned/`)
-- `requirements.txt` - Python dependencies
-- `README.md` - This file
-
-**Optional files:**
-- `tabpy_config.conf` - TabPy configuration
-- `ml/model_info.pkl` - Model metadata (auto-generated)
-
-**Files you can ignore:**
-- `src/` - Complex architecture (not needed)
-- `tests/` - Unit tests (not needed for simple project)
-- `notebooks/` - Jupyter notebooks (optional)
-- `dashboard/` - HTML dashboard (optional)
-- `examples/` - Example code (optional)
+**No complex frameworks, no over-engineering — just simple, working code.**
 
 ---
 
 Built with ❤️ for DATA 230 at SJSU
-
