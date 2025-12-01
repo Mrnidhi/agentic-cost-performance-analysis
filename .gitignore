@@ -52,3 +52,8 @@ models/*.joblib
 
 # Executed notebooks
 *_executed.ipynb
+
+# TabPy state files
+/tmp/tabpy_state/
+/tmp/query_objects/
+tabpy_log.log

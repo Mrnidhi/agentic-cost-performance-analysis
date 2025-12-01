@@ -1,4 +1,0 @@
-# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/core/types.py
-# hypothesis_version: 6.148.3
-
-[0.2, 0.3, 0.35, 0.4, 0.5, 0.7, 100, 400, '#4caf50', '#9c27b0', '#f44336', '#ff9800', 'AgentId', 'AgentType', 'Challenger', 'Cloud', 'Code Assistant', 'CompetitivePosition', 'ConfidenceScore', 'Content Writer', 'CostCents', 'CostEfficiencyTier', 'Critical', 'Customer Support', 'Data Analyst', 'Edge', 'Follower', 'High', 'Hybrid', 'Laggard', 'Leader', 'Low', 'Marketing Assistant', 'Medium', 'Mobile', 'PerformanceScore', 'Project Manager', 'QA Tester', 'Research Assistant', 'RiskLevel', 'RiskScore', 'Server', 'StrategicImportance', 'Very High', 'Very Low', 'balanced', 'cost', 'performance', 'risk_averse']

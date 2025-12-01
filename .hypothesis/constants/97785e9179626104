@@ -1,4 +1,0 @@
-# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/models/ensemble.py
-# hypothesis_version: 6.148.3
-
-[1e-08, 0.5, 0.8, 0.85, 0.9, 1.0, 100, '%Y%m%d', '%Y%m%d_%H%M%S', 'CPU', 'High CPU Usage', 'High Memory Usage', 'Latency', 'Low Success Rate', 'Memory', 'Success Rate', 'Unknown', 'agent_type', 'best_similarity', 'contamination', 'cost_per_task_cents', 'cpu_usage_percent', 'efficiency_score', 'good overall match', 'high', 'high success rate', 'medium', 'memory_usage_mb', 'model_architecture', 'model_version', 'n_agents', 'n_capabilities', 'n_features', 'n_samples', 'response_latency_ms', 'success_rate', 'top_k']

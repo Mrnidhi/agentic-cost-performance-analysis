@@ -1,4 +1,0 @@
-# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/models/optimization.py
-# hypothesis_version: 6.148.3
-
-[1.0, 100, 'business_value_score', 'categorical', 'choices', 'cost', 'cost_per_task_cents', 'float', 'high', 'int', 'low', 'maximize', 'minimize', 'n_trials', 'params', 'pareto_optimal', 'pareto_optimal_count', 'pareto_solutions', 'performance', 'performance_vs_cost', 'performance_vs_risk', 'risk', 'sweet_spots', 'total_configurations', 'total_solutions', 'tradeoff_curves', 'type', 'values']

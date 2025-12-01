@@ -1,4 +1,0 @@
-# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/models/explainer.py
-# hypothesis_version: 6.148.3
-
-[0.0, 'coef_', 'combined_rank', 'correlation', 'estimators_', 'expected_value', 'feature_importances_', 'get_booster', 'model_importance', 'n_features', 'permutation', 'score']

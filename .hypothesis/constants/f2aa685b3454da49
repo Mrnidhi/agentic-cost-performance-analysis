@@ -1,4 +1,0 @@
-# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/features/pipeline.py
-# hypothesis_version: 6.148.3
-
-['Processing in chunks', 'caching_enabled', 'chunk_size', 'duration_seconds', 'error', 'features_added', 'input_shape', 'n_chunks', 'num_strategies', 'output_shape', 'strategy', 'total_features', 'total_features_added']

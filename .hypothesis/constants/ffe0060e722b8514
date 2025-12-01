@@ -1,4 +1,0 @@
-# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/features/temporal_features.py
-# hypothesis_version: 6.148.3
-
-[-1.0, 0.0, 0.4, 0.5, 0.6, 1.0, 86400, 'agent_id', 'day_of_week', 'features_added', 'hour_of_day', 'is_weekend', 'mean', 'performance_trend_7d', 'seasonality_impact', 'stability_index', 'success_rate', 'timestamp', 'window_days']

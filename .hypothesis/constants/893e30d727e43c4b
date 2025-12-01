@@ -1,4 +1,0 @@
-# file: /Users/srinidhigowda/Desktop/Git-Clones/agentic-cost-performance-analysis/src/features/strategic_groupings.py
-# hypothesis_version: 6.148.3
-
-[0.5, 100, 'Rising Star', 'Specialist', 'Underperformer', 'Workhorse', 'agent_type', 'business_value_score', 'bv', 'cost_efficiency_tier', 'cx', 'features_added', 'percentile', 'performance_quartile', 'quartile', 'quartiles', 'strategic_importance', 'success_rate', 'task_complexity', 'tiers']
