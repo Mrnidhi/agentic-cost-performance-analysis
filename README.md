@@ -1,18 +1,19 @@
-# AI Agent Success Rate Prediction
+# AI Agent Cost & Performance Analysis
 
 **Course:** DATA 230 - Data Visualization at SJSU
 
-A simple ML project that predicts AI agent `success_rate` and integrates with Tableau via TabPy.
+A comprehensive data analysis project that prepares AI agent performance data for machine learning and Tableau visualization. This project follows a complete data science workflow from raw data cleaning through exploratory analysis to feature engineering.
 
 ---
 
 ## 🎯 Project Purpose
 
-This project demonstrates a complete ML → TabPy → Tableau workflow:
+This project demonstrates a complete data preparation workflow for AI agent performance analysis:
 
-1. **Train** a regression model to predict `success_rate` from agent features
-2. **Deploy** the model to TabPy for Tableau integration
-3. **Use** predictions in Tableau for row-level analysis and what-if scenarios
+1. **Data Preparation** - Clean and validate raw AI agent performance data
+2. **Exploratory Data Analysis** - Understand relationships, correlations, and patterns
+3. **Feature Engineering** - Create composite metrics and interaction features for ML models
+4. **Future: ML Integration** - Train models to predict `success_rate` and deploy via TabPy for Tableau
 
 ---
 
@@ -20,174 +21,250 @@ This project demonstrates a complete ML → TabPy → Tableau workflow:
 
 ```
 agentic-cost-performance-analysis/
-├── cleaned_data.csv              # Main dataset
-├── train_model.py                # Train ML model
-├── deploy_to_tabpy.py            # Deploy to TabPy
-├── requirements.txt              # Python dependencies
-├── README.md                     # This file
-├── PROJECT_STRUCTURE.md          # Structure guide
-├── tabpy_config.conf             # TabPy configuration
-│
-├── success_rate_model.pkl        # Generated: Trained model
-├── model_info.pkl                # Generated: Model metadata (optional)
+├── TG01_Data_Preparation.ipynb      # Step 1: Data cleaning & validation
+├── TG02_EDA_Analysis.ipynb          # Step 2: Exploratory data analysis
+├── TG03_Feature_Engineering.ipynb   # Step 3: Feature engineering
+├── requirements.txt                 # Python dependencies
+├── README.md                        # This file
 │
 ├── data/
-│   ├── raw/                      # Raw dataset
-│   ├── cleaned/                  # Cleaned dataset
-│   └── analytics/                # Feature engineering outputs
+│   ├── raw/
+│   │   └── agentic_ai.csv           # Original raw dataset (5000 rows, 26 columns)
+│   ├── cleaned/
+│   │   └── cleaned_data.csv        # Cleaned dataset (5000 rows, 26 columns)
+│   └── analytics/
+│       └── feature_engineered_data.csv  # Feature-engineered dataset (5000 rows, 37 columns)
 │
-└── archive/                       # Legacy files (moved here)
+└── ml/                              # Reserved for ML scripts (future)
 ```
 
 ---
 
-## 🚀 Quick Start
+## 📊 Dataset Overview
 
-### Step 1: Install Dependencies
+### Original Dataset (`data/raw/agentic_ai.csv`)
+- **Size:** 5,000 AI agent performance records
+- **Columns:** 26 features including:
+  - Agent metadata: `agent_id`, `agent_type`, `model_architecture`, `deployment_environment`
+  - Performance metrics: `success_rate`, `accuracy_score`, `efficiency_score`
+  - Resource usage: `memory_usage_mb`, `cpu_usage_percent`, `execution_time_seconds`
+  - Cost metrics: `cost_per_task_cents`, `cost_efficiency_ratio`
+  - Quality scores: `data_quality_score`, `privacy_compliance_score`, `bias_detection_score`
+
+### Cleaned Dataset (`data/cleaned/cleaned_data.csv`)
+- **Validated:** No missing values, no duplicates
+- **Ready for analysis:** All 26 original columns preserved
+
+### Feature-Engineered Dataset (`data/analytics/feature_engineered_data.csv`)
+- **New Features:** 11 engineered features added:
+  1. `overall_performance_score` - Average of success, accuracy, and efficiency
+  2. `resource_efficiency_score` - Efficiency relative to memory and CPU usage
+  3. `cost_effectiveness` - Performance per cent spent
+  4. `weighted_quality_score` - Weighted combination of success, accuracy, and data quality
+  5. `complexity_autonomy_ratio` - Autonomy relative to task complexity
+  6. `success_autonomy_interaction` - Multiplicative effect of success and autonomy
+  7. `latency_per_operation` - Latency burden relative to execution time
+  8. `arch_performance_benchmark` - Performance vs median for architecture
+  9. `env_avg_cost_per_complexity` - Average cost per complexity unit by environment
+  10. `hour_of_day` - Extracted hour from timestamp
+  11. `is_weekend` - Binary flag for weekend operations
+
+---
+
+## 🚀 Workflow
+
+### Step 1: Data Preparation (`TG01_Data_Preparation.ipynb`)
+
+**Purpose:** Clean and validate the raw dataset
+
+**Process:**
+- Load raw data from `data/raw/agentic_ai.csv`
+- Inspect data types and structure
+- Check for missing values and duplicates
+- Validate data quality
+- Save cleaned dataset to `data/cleaned/cleaned_data.csv`
+
+**Output:**
+- Clean dataset with 5,000 rows, 26 columns
+- No missing values or duplicates
+- Ready for analysis
+
+### Step 2: Exploratory Data Analysis (`TG02_EDA_Analysis.ipynb`)
+
+**Purpose:** Understand relationships and patterns in the data
+
+**Analysis Includes:**
+- Correlation matrix of key numerical variables
+- Descriptive statistics for performance and cost metrics
+- Visualization of relationships between metrics
+- Key insights:
+  - `performance_index` strongly correlated with `accuracy_score` (r ≈ 0.97) and `efficiency_score` (r ≈ 0.96)
+  - `cost_per_task_cents` rises linearly with `execution_time_seconds` (r ≈ 0.99)
+  - High resource usage correlates negatively with performance (r < -0.8)
+  - Faster, lighter models achieve better performance per cost
+
+### Step 3: Feature Engineering (`TG03_Feature_Engineering.ipynb`)
+
+**Purpose:** Create composite metrics and interaction features for ML models
+
+**Feature Categories:**
+- **Composite Performance Metrics:** Overall performance, resource efficiency, cost effectiveness
+- **Interaction Features:** Complexity-autonomy ratios, success-autonomy interactions
+- **Categorical Groupings:** Architecture benchmarks, environment cost patterns
+- **Temporal Features:** Hour of day, weekend flags
+
+**Output:**
+- Feature-engineered dataset with 37 columns (26 original + 11 new)
+- Saved to `data/analytics/feature_engineered_data.csv`
+
+---
+
+## 🔧 Setup & Installation
+
+### Prerequisites
+- Python 3.8+
+- Jupyter Notebook or JupyterLab
+
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 2: Train the Model
+**Required packages:**
+- `pandas` - Data manipulation and analysis
+- `numpy` - Numerical computing
+- `scikit-learn` - Machine learning (for future ML steps)
+- `joblib` - Model serialization (for future ML steps)
+- `tabpy` - TabPy server (for future Tableau integration)
+- `tabpy-client` - TabPy client library (for future deployment)
 
-```bash
-python train_model.py
-```
+### Run the Notebooks
 
-This will:
-- Load `cleaned_data.csv`
-- Train a RandomForestRegressor to predict `success_rate`
-- Save the model to `success_rate_model.pkl`
-- Print R² score and MAE metrics
+1. **Data Preparation:**
+   ```bash
+   jupyter notebook TG01_Data_Preparation.ipynb
+   ```
 
-### Step 3: Start TabPy Server
+2. **EDA Analysis:**
+   ```bash
+   jupyter notebook TG02_EDA_Analysis.ipynb
+   ```
 
-Open a **new terminal** and run:
-
-```bash
-tabpy --disable-auth-warning
-```
-
-Wait until you see: `Web service listening on port 9004`
-
-### Step 4: Deploy Model to TabPy
-
-In your original terminal:
-
-```bash
-python deploy_to_tabpy.py
-```
-
-This deploys the `predict_success_rate` function to TabPy.
-
-### Step 5: Connect Tableau
-
-1. Open Tableau Desktop
-2. Connect to your data source (`cleaned_data.csv`)
-3. Go to: **Help → Settings and Performance → Manage Analytics Extension Connection**
-4. Select **TabPy**, Server: `localhost`, Port: `9004`
-5. Click **Test Connection** → **OK**
-
-### Step 6: Create Prediction Calculated Field
-
-Create a new calculated field in Tableau:
-
-```
-SCRIPT_REAL("
-return tabpy.query('predict_success_rate', 
-    _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)['response']
-",
-SUM([task_complexity]),
-SUM([autonomy_level]),
-SUM([accuracy_score]),
-SUM([efficiency_score]),
-SUM([memory_usage_mb]),
-SUM([cpu_usage_percent]),
-SUM([cost_per_task_cents])
-)
-```
-
-Name it **"Predicted Success Rate"** and use it in your visualizations!
+3. **Feature Engineering:**
+   ```bash
+   jupyter notebook TG03_Feature_Engineering.ipynb
+   ```
 
 ---
 
-## 📊 Features Used for Prediction
+## 📈 Key Insights from Analysis
 
-| Feature | Description |
-|---------|-------------|
-| `task_complexity` | Complexity level (1-10) |
-| `autonomy_level` | Agent autonomy level (1-10) |
-| `accuracy_score` | Accuracy score (0-1) |
-| `efficiency_score` | Efficiency score (0-1) |
-| `memory_usage_mb` | Memory usage in MB |
-| `cpu_usage_percent` | CPU usage (0-100%) |
-| `cost_per_task_cents` | Cost per task in cents |
+### Performance Drivers
+- **Accuracy and efficiency** jointly drive overall performance
+- **Resource optimization** (lower memory/CPU) significantly improves performance
+- **Task complexity** and **autonomy level** increase cost and resource use but reduce performance
 
-**Target:** `success_rate` (0-1)
+### Cost Behavior
+- **Execution time** directly correlates with cost (r ≈ 0.99)
+- **Cost efficiency** drops as runtime grows (r ≈ -0.78)
+- **Speed optimizations** yield direct cost benefits
 
----
-
-## 🎯 Model Performance
-
-After training, you'll see metrics like:
-
-```
-R² Score: 0.85-0.95   (higher is better, max 1.0)
-MAE:      0.03-0.08   (lower is better)
-```
+### Optimization Opportunities
+- Faster, lighter models achieve **better performance per cost**
+- Reducing runtime and resource usage offers the **strongest path to efficiency gains**
+- Complex tasks are harder to optimize but offer higher potential impact
 
 ---
 
-## 💡 Tableau Visualization Ideas
+## 🎯 Future Work: ML & Tableau Integration
 
-1. **Actual vs Predicted**: Scatter plot comparing real `success_rate` to predicted
-2. **Prediction Error**: Bar chart showing prediction accuracy by `agent_type`
-3. **What-If Analysis**: Use Tableau parameters to simulate different configurations
-4. **Feature Impact**: Show which features most affect predictions
+### Planned ML Workflow
 
----
+1. **Model Training** (`ml/train_model.py` - to be created)
+   - Train RandomForestRegressor to predict `success_rate`
+   - Use feature-engineered dataset
+   - Split: 80% train, 20% test
+   - Save model to `ml/success_rate_model.pkl`
 
-## 🔧 Troubleshooting
+2. **TabPy Deployment** (`ml/deploy_to_tabpy.py` - to be created)
+   - Load trained model
+   - Deploy `predict_success_rate` function to TabPy
+   - Enable Tableau integration
 
-### "TabPy connection failed"
-- Make sure TabPy is running (`tabpy --disable-auth-warning` in a separate terminal)
-- Check that port 9004 is not blocked
-
-### "Model file not found"
-- Run `python train_model.py` first
-
-### "Column not found"
-- Verify your data has all required columns
-- Check column names match exactly (case-sensitive)
+3. **Tableau Integration**
+   - Connect Tableau to TabPy server
+   - Use `SCRIPT_REAL` to call predictions
+   - Create visualizations: Actual vs Predicted, What-If Analysis, Feature Impact
 
 ---
 
-## 📋 Simple Architecture Overview
+## 📋 Data Dictionary
 
-```
-┌─────────────────┐
-│ cleaned_data.csv│
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│ train_model.py   │──► success_rate_model.pkl
-└─────────────────┘
-         │
-         ▼
-┌─────────────────┐
-│ deploy_to_tabpy │──► TabPy Server (localhost:9004)
-└─────────────────┘
-         │
-         ▼
-┌─────────────────┐
-│   Tableau       │──► SCRIPT_REAL calls predict_success_rate
-└─────────────────┘
-```
+### Core Performance Metrics
+| Feature | Type | Description | Range |
+|---------|------|-------------|-------|
+| `success_rate` | float | Task success rate | 0.0 - 1.0 |
+| `accuracy_score` | float | Prediction accuracy | 0.0 - 1.0 |
+| `efficiency_score` | float | Operational efficiency | 0.0 - 1.0 |
+| `performance_index` | float | Composite performance score | 0.0 - 1.0 |
 
-**No complex frameworks, no over-engineering — just simple, working code.**
+### Resource Usage
+| Feature | Type | Description | Range |
+|---------|------|-------------|-------|
+| `memory_usage_mb` | float | Memory consumption in MB | ~100 - 600 |
+| `cpu_usage_percent` | float | CPU utilization percentage | 0 - 100 |
+| `execution_time_seconds` | float | Task execution time | 1 - 157 seconds |
+| `response_latency_ms` | float | Response latency in milliseconds | ~100 - 5500 ms |
+
+### Cost Metrics
+| Feature | Type | Description | Range |
+|---------|------|-------------|-------|
+| `cost_per_task_cents` | float | Cost per task in cents | 0.003 - 0.059 |
+| `cost_efficiency_ratio` | float | Performance per cost unit | 5.95 - 219.33 |
+
+### Agent Characteristics
+| Feature | Type | Description | Values |
+|---------|------|-------------|--------|
+| `agent_type` | string | Type of AI agent | 16 types (e.g., "Project Manager", "Code Assistant") |
+| `model_architecture` | string | ML model architecture | 10 types (e.g., "GPT-4o", "Claude-3.5", "LLaMA-3") |
+| `deployment_environment` | string | Deployment location | 6 types (Cloud, Server, Edge, Hybrid, Mobile, Desktop) |
+| `task_category` | string | Task type | 10 categories (e.g., "Text Processing", "Decision Making") |
+| `task_complexity` | int | Complexity level | 1 - 10 |
+| `autonomy_level` | int | Agent autonomy level | 1 - 10 |
 
 ---
 
-Built with ❤️ for DATA 230 at SJSU
+## 🔍 Project Status
+
+### ✅ Completed
+- [x] Data cleaning and validation
+- [x] Exploratory data analysis
+- [x] Feature engineering (11 new features)
+- [x] Dataset preparation for ML
+
+### 🚧 In Progress / Planned
+- [ ] ML model training script
+- [ ] TabPy deployment script
+- [ ] Tableau dashboard creation
+- [ ] Model performance evaluation
+
+---
+
+## 📚 Course Context
+
+This project is part of **DATA 230 - Data Visualization** at San José State University, focusing on:
+- Data preparation and cleaning workflows
+- Exploratory data analysis techniques
+- Feature engineering for machine learning
+- Integration of ML models with visualization tools (Tableau via TabPy)
+
+---
+
+## 🤝 Contributing
+
+This is a course project. For questions or suggestions, please contact the course instructor.
+
+---
+
+**Built with ❤️ for DATA 230 at SJSU**
