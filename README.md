@@ -177,28 +177,6 @@ pip install -r requirements.txt
 
 ---
 
-## 🎯 Future Work: ML & Tableau Integration
-
-### Planned ML Workflow
-
-1. **Model Training** (`ml/train_model.py` - to be created)
-   - Train RandomForestRegressor to predict `success_rate`
-   - Use feature-engineered dataset
-   - Split: 80% train, 20% test
-   - Save model to `ml/success_rate_model.pkl`
-
-2. **TabPy Deployment** (`ml/deploy_to_tabpy.py` - to be created)
-   - Load trained model
-   - Deploy `predict_success_rate` function to TabPy
-   - Enable Tableau integration
-
-3. **Tableau Integration**
-   - Connect Tableau to TabPy server
-   - Use `SCRIPT_REAL` to call predictions
-   - Create visualizations: Actual vs Predicted, What-If Analysis, Feature Impact
-
----
-
 ## 📋 Data Dictionary
 
 ### Core Performance Metrics
@@ -232,22 +210,6 @@ pip install -r requirements.txt
 | `task_category` | string | Task type | 10 categories (e.g., "Text Processing", "Decision Making") |
 | `task_complexity` | int | Complexity level | 1 - 10 |
 | `autonomy_level` | int | Agent autonomy level | 1 - 10 |
-
----
-
-## 🔍 Project Status
-
-### ✅ Completed
-- [x] Data cleaning and validation
-- [x] Exploratory data analysis
-- [x] Feature engineering (11 new features)
-- [x] Dataset preparation for ML
-
-### 🚧 In Progress / Planned
-- [ ] ML model training script
-- [ ] TabPy deployment script
-- [ ] Tableau dashboard creation
-- [ ] Model performance evaluation
 
 ---
 
