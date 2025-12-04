@@ -23,26 +23,24 @@ This project demonstrates a complete data preparation workflow for AI agent perf
 flowchart TB
     RawData[Raw Data<br/>data/raw/agentic_ai.csv<br/>5000 rows, 26 columns]
     
-    subgraph Pipeline["Data Processing Pipeline"]
-        Step1[TG01_Data_Preparation<br/>Data Cleaning and Validation]
-        Step2[TG02_EDA_Analysis<br/>Exploratory Data Analysis]
-        Step3[TG03_Feature_Engineering<br/>Feature Engineering]
-    end
+    Step1[TG01_Data_Preparation<br/>Data Cleaning and Validation]
     
-    CleanedData[Cleaned Dataset<br/>data/cleaned/cleaned_data.csv<br/>5000 rows, 26 columns]
+    CleanedData[Cleaned Dataset<br/>data/cleaned/cleaned_data.csv<br/>5000 rows, 26 columns<br/>Central Hub]
+    
+    Step2[TG02_EDA_Analysis<br/>Exploratory Data Analysis]
+    Step3[TG03_Feature_Engineering<br/>Feature Engineering]
+    
+    Insights[Key Insights<br/>Performance drivers, cost patterns]
+    Correlations[Correlation Analysis<br/>Metrics and relationships]
+    
     FeatureData[Feature-Engineered Dataset<br/>data/analytics/feature_engineered_data.csv<br/>5000 rows, 37 columns]
-    
-    subgraph Analysis["Analysis Outputs"]
-        Insights[Key Insights<br/>Performance drivers, cost patterns]
-        Correlations[Correlation Analysis<br/>Metrics and relationships]
-    end
     
     RawData --> Step1
     Step1 --> CleanedData
     CleanedData --> Step2
+    CleanedData --> Step3
     Step2 --> Correlations
     Step2 --> Insights
-    CleanedData --> Step3
     Step3 --> FeatureData
 ```
 
