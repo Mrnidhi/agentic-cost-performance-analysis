@@ -18,37 +18,28 @@ The project implements a sequential data processing pipeline designed to transfo
 
 ```mermaid
 flowchart TD
-    subgraph Ingestion ["Data Ingestion"]
-        Raw([Raw Logs<br/>agentic_ai.csv])
+    subgraph Bronze [Bronze Layer]
+        Raw[("Raw Data<br/>data/raw")]
     end
 
-    subgraph Processing ["Processing Pipeline"]
-        direction TB
-        TG01[<b>Step 1: Validation</b><br/>TG01_Data_Preparation<br/><i>Type Casting & Cleaning</i>]
-        TG02[<b>Step 2: Analysis</b><br/>TG02_EDA_Analysis<br/><i>Correlation & Stats</i>]
-        TG03[<b>Step 3: Engineering</b><br/>TG03_Feature_Engineering<br/><i>Composite Metrics</i>]
-        
-        TG01 --> TG02 --> TG03
+    TG01["TG01: Data Preparation"]
+
+    subgraph Silver [Silver Layer]
+        Clean[("Clean Data<br/>data/cleaned")]
     end
 
-    subgraph Output ["Analytics Output"]
-        Final([<b>Analytics Ready</b><br/>feature_engineered_data.csv])
+    TG02["TG02: EDA Analysis"]
+    TG03["TG03: Feature Engineering"]
+
+    subgraph Gold [Gold Layer]
+        Analytics[("Analytics Data<br/>data/analytics")]
     end
 
     Raw --> TG01
-    TG03 --> Final
-
-    %% Styling
-    style Ingestion fill:#f9f9f9,stroke:#9e9e9e,stroke-width:1px,stroke-dasharray: 5 5
-    style Processing fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
-    style Output fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    
-    style Raw fill:#ffffff,stroke:#333,stroke-width:2px
-    style Final fill:#ffffff,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    
-    style TG01 fill:#ffffff,stroke:#1565c0
-    style TG02 fill:#ffffff,stroke:#1565c0
-    style TG03 fill:#ffffff,stroke:#1565c0
+    TG01 --> Clean
+    Clean --> TG02
+    Clean --> TG03
+    TG03 --> Analytics
 ```
 
 ---
