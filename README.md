@@ -17,40 +17,26 @@ This project demonstrates a complete data preparation workflow for AI agent perf
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```mermaid
-graph TB
-    %% Data Sources
-    RawData[📊 Raw Data<br/>data/raw/agentic_ai.csv<br/>5000 rows × 26 columns]
+flowchart TB
+    RawData[Raw Data<br/>data/raw/agentic_ai.csv<br/>5000 rows, 26 columns]
     
-    %% Data Processing Pipeline
-    subgraph Pipeline["📋 Data Processing Pipeline"]
-        Step1[📓 TG01_Data_Preparation<br/>Data Cleaning & Validation]
-        Step2[📊 TG02_EDA_Analysis<br/>Exploratory Data Analysis]
-        Step3[🔧 TG03_Feature_Engineering<br/>Feature Engineering]
+    subgraph Pipeline["Data Processing Pipeline"]
+        Step1[TG01_Data_Preparation<br/>Data Cleaning and Validation]
+        Step2[TG02_EDA_Analysis<br/>Exploratory Data Analysis]
+        Step3[TG03_Feature_Engineering<br/>Feature Engineering]
     end
     
-    %% Data Artifacts
-    CleanedData[✅ Cleaned Dataset<br/>data/cleaned/cleaned_data.csv<br/>5000 rows × 26 columns<br/>No missing values, no duplicates]
-    FeatureData[🎯 Feature-Engineered Dataset<br/>data/analytics/feature_engineered_data.csv<br/>5000 rows × 37 columns<br/>11 new features]
+    CleanedData[Cleaned Dataset<br/>data/cleaned/cleaned_data.csv<br/>5000 rows, 26 columns]
+    FeatureData[Feature-Engineered Dataset<br/>data/analytics/feature_engineered_data.csv<br/>5000 rows, 37 columns]
     
-    %% Analysis Outputs
-    subgraph Analysis["📈 Analysis Outputs"]
-        Insights[💡 Key Insights<br/>• Performance drivers<br/>• Cost behavior<br/>• Optimization opportunities]
-        Correlations[📊 Correlation Analysis<br/>• Performance metrics<br/>• Resource usage<br/>• Cost efficiency]
+    subgraph Analysis["Analysis Outputs"]
+        Insights[Key Insights<br/>Performance drivers, cost patterns]
+        Correlations[Correlation Analysis<br/>Metrics and relationships]
     end
     
-    %% Future ML Pipeline
-    subgraph FutureML["🚀 Future ML Pipeline (Planned)"]
-        TrainModel[🤖 Model Training<br/>ml/train_model.py<br/>RandomForestRegressor]
-        ModelArtifact[💾 Trained Model<br/>ml/success_rate_model.pkl]
-        TabPyDeploy[📤 TabPy Deployment<br/>ml/deploy_to_tabpy.py]
-        TabPyServer[🌐 TabPy Server<br/>localhost:9004]
-        Tableau[📊 Tableau Desktop<br/>Visualizations & Predictions]
-    end
-    
-    %% Data Flow
     RawData --> Step1
     Step1 --> CleanedData
     CleanedData --> Step2
@@ -58,25 +44,6 @@ graph TB
     Step2 --> Insights
     CleanedData --> Step3
     Step3 --> FeatureData
-    
-    %% Future ML Flow
-    FeatureData -.->|Future| TrainModel
-    TrainModel -.->|Future| ModelArtifact
-    ModelArtifact -.->|Future| TabPyDeploy
-    TabPyDeploy -.->|Future| TabPyServer
-    TabPyServer -.->|Future| Tableau
-    FeatureData -.->|Future| Tableau
-    
-    %% Styling
-    classDef completed fill:#90EE90,stroke:#006400,stroke-width:2px
-    classDef future fill:#FFE4B5,stroke:#FF8C00,stroke-width:2px,stroke-dasharray: 5 5
-    classDef data fill:#87CEEB,stroke:#4682B4,stroke-width:2px
-    classDef analysis fill:#DDA0DD,stroke:#9370DB,stroke-width:2px
-    
-    class RawData,CleanedData,FeatureData data
-    class Step1,Step2,Step3 completed
-    class TrainModel,ModelArtifact,TabPyDeploy,TabPyServer,Tableau future
-    class Insights,Correlations analysis
 ```
 
 ---
